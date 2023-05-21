@@ -10,10 +10,20 @@ const dataPlace: FieldsSearchItemInterface[] = [
     { id: 5, title: '12 Angry Men' },
     { id: 6, title: '12 Angry Men' },
     { id: 7, title: '12 Angry Men' },
+    { id: 9, title: '12 Angry Men' },
+    { id: 10, title: '12 Angry Men' },
+    { id: 11, title: '12 Angry Men' },
+    { id: 12, title: '12 Angry Men' },
+    { id: 13, title: '12 Angry Men' },
+    { id: 14, title: '12 Angry Men' },
+    { id: 15, title: '12 Angry Men' },
+    { id: 16, title: '12 Angry Men' },
+    { id: 17, title: '12 Angry Men' },
+    { id: 18, title: '12 Angry Men' },
 ];
 export default function SearchFieldsFlights() {
     return (
-        <div className='flex flex-col lg:flex-row items-center justify-between border rounded'>
+        <div className='relative flex flex-col lg:flex-row items-center justify-between border rounded'>
             <div className='w-full lg:w-[45%] border-b lg:border-r lg:border-b-0'>
                 <FieldsSearch
                     label='origin (city ، airport)'

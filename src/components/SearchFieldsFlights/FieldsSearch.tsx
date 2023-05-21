@@ -1,15 +1,25 @@
-import { Autocomplete, TextField } from '@mui/material';
+import {Autocomplete, TextField} from '@mui/material';
 import {
     FieldsSearchInterface,
     FieldsSearchItemInterface,
 } from '@/types/components/SearchFieldsFlights';
 
-export default function FieldsSearch({ label, options, icon }: FieldsSearchInterface) {
+
+const PopperComponent = (props: any) => {
+    return (
+        <span className="absolute top-14 right-0 left-0">
+            {props.children}
+        </span>
+    );
+}
+
+export default function FieldsSearch({label, options, icon}: FieldsSearchInterface) {
     return (
         <Autocomplete
+            PopperComponent={PopperComponent}
             freeSolo
             fullWidth
-            id='free-solo-2-demo'
+            id='FieldsSearch'
             options={options}
             autoHighlight
             getOptionLabel={(option: any) => option.title}
@@ -28,7 +38,7 @@ export default function FieldsSearch({ label, options, icon }: FieldsSearchInter
                                 width: '90%',
                                 paddingLeft: '10px',
                             },
-                            '& fieldset': { border: 'none', padding: '0px' },
+                            '& fieldset': {border: 'none', padding: '0px'},
                             '& label.Mui-focused': {
                                 color: 'var(--color-primary)',
                             },
