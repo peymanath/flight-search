@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
-import type { TabPanelProps } from '@/types/components/Tabs';
+import type {TabPanelProps} from '@/types/components/Tabs';
 
 export default function TabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
+    const {children, value, index, ...other} = props;
 
     return (
         <div
@@ -11,7 +11,12 @@ export default function TabPanel(props: TabPanelProps) {
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
             {...other}>
-            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+            {value === index &&
+                <div className="py-5">
+                    {children}
+                </div>
+            }
         </div>
-    );
+    )
+        ;
 }
