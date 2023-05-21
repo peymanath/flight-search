@@ -22,7 +22,7 @@ export default function Home() {
     return (
         <div className='flex items-center justify-center w-full h-[100vh] bg-gray-700'>
             <div className='container flex items-center justify-center'>
-                <div className='w-[600px] h-60 bg-white rounded-lg p-5'>
+                <div className='w-full lg:w-1/2 bg-white rounded-lg p-5'>
                     <BasicTabs tabData={tabData}/>
                 </div>
             </div>
