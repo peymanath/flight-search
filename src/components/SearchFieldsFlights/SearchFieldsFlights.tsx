@@ -1,37 +1,15 @@
-import { Autocomplete, TextField } from '@mui/material';
-import { alpha, styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import { AirPlane, Exchange } from 'react-huge-icons/outline';
 import FieldsSearch from '@/components/SearchFieldsFlights/FieldsSearch';
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
-    { title: 'The Shawshank Redemption' },
-    { title: 'The Godfather' },
-    { title: 'The Godfather: Part II' },
-    { title: 'The Dark Knight' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
-    { title: '12 Angry Men' },
+import type { FieldsSearchItemInterface } from '@/types/components/SearchFieldsFlights';
+
+const dataPlace: FieldsSearchItemInterface[] = [
+    { id: 1, title: 'The Shawshank Redemption' },
+    { id: 2, title: 'The Godfather' },
+    { id: 3, title: 'The Godfather: Part II' },
+    { id: 4, title: 'The Dark Knight' },
+    { id: 5, title: '12 Angry Men' },
+    { id: 6, title: '12 Angry Men' },
+    { id: 7, title: '12 Angry Men' },
 ];
 export default function SearchFieldsFlights() {
     return (
@@ -39,7 +17,7 @@ export default function SearchFieldsFlights() {
             <div className='w-full lg:w-[45%] border-b lg:border-r lg:border-b-0'>
                 <FieldsSearch
                     label='origin (city ، airport)'
-                    options={top100Films}
+                    options={dataPlace}
                     icon={<AirPlane className='w-5 h-5' />}
                 />
             </div>
@@ -49,7 +27,7 @@ export default function SearchFieldsFlights() {
             <div className='w-full lg:w-[45%] border-t lg:border-l lg:border-t-0'>
                 <FieldsSearch
                     label='flex items-center justify-between'
-                    options={top100Films}
+                    options={dataPlace}
                     icon={<AirPlane className='w-5 h-5' />}
                 />
             </div>

@@ -33,8 +33,9 @@ export default function BasicTabs({ tabData }: BasicTabsType) {
                         },
                     }}>
                     {!!tabData &&
-                        tabData.map(({ iconTab, indexTab, labelTab }: BasicTabsTabDataType) => (
+                        tabData.map(({ id, iconTab, indexTab, labelTab }: BasicTabsTabDataType) => (
                             <Tab
+                                key={id}
                                 icon={iconTab}
                                 label={labelTab}
                                 {...dataTab(indexTab)}
@@ -46,8 +47,9 @@ export default function BasicTabs({ tabData }: BasicTabsType) {
                 </Tabs>
             </div>
             {!!tabData &&
-                tabData.map(({ indexTab, TabPanelData }: BasicTabsTabDataType) => (
+                tabData.map(({ id, indexTab, TabPanelData }: BasicTabsTabDataType) => (
                     <TabPanel
+                        key={id}
                         value={value}
                         index={indexTab}>
                         {TabPanelData}

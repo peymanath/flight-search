@@ -1,13 +1,8 @@
 import { Autocomplete, TextField } from '@mui/material';
-import { AirPlane } from 'react-huge-icons/outline';
-
-interface FieldsSearchInterface {
-    label: string;
-    options: {
-        title: string;
-    }[];
-    icon: JSX.Element | string;
-}
+import {
+    FieldsSearchInterface,
+    FieldsSearchItemInterface,
+} from '@/types/components/SearchFieldsFlights';
 
 export default function FieldsSearch({ label, options, icon }: FieldsSearchInterface) {
     return (
@@ -15,8 +10,10 @@ export default function FieldsSearch({ label, options, icon }: FieldsSearchInter
             freeSolo
             fullWidth
             id='free-solo-2-demo'
-            disableClearable
-            options={options.map(option => option.title)}
+            options={options}
+            autoHighlight
+            getOptionLabel={(option: any) => option.title}
+            filterSelectedOptions={true}
             renderInput={params => (
                 <div className='flex items-center justify-between'>
                     <TextField
@@ -38,12 +35,19 @@ export default function FieldsSearch({ label, options, icon }: FieldsSearchInter
                         }}
                         InputProps={{
                             ...params.InputProps,
-                            type: 'search',
+                            autoComplete: 'new-password',
                         }}
                     />
 
                     <div className='p-4 text-gray-400'>{icon}</div>
                 </div>
+            )}
+            renderOption={(props, option: FieldsSearchItemInterface) => (
+                <li
+                    {...props}
+                    key={option.id}>
+                    {option.title}
+                </li>
             )}
         />
     );

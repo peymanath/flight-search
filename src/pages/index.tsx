@@ -5,12 +5,14 @@ import SearchFieldsFlights from '@/components/SearchFieldsFlights/SearchFieldsFl
 
 const tabData: BasicTabsTabDataType[] = [
     {
+        id: 1,
         iconTab: <AirPlane className='w-7 h-7 !m-0' />,
         indexTab: 0,
         labelTab: 'Flight',
         TabPanelData: <SearchFieldsFlights />,
     },
     {
+        id: 2,
         iconTab: <HomeSmile className='w-7 h-7 !m-0' />,
         indexTab: 1,
         labelTab: 'Hotel',

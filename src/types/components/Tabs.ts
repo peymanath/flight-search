@@ -7,6 +7,7 @@ export interface TabPanelProps {
 }
 
 export interface BasicTabsTabDataType {
+    id: number;
     iconTab?: JSX.Element | string;
     indexTab: number;
     labelTab: string;
