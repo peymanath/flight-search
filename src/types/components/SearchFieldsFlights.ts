@@ -26,7 +26,6 @@ export interface FlightResponse {
     countryCode: string;
     countryNames: FlightNamesResponse[];
     cities: FlightCitiesResponse[];
-    props?: any;
 }
 
 export interface DestracturData {
