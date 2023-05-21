@@ -1,19 +1,13 @@
-import {Autocomplete, TextField} from '@mui/material';
-import {
-    FieldsSearchInterface,
-    FieldsSearchItemInterface,
-} from '@/types/components/SearchFieldsFlights';
-
+import { Autocomplete, TextField } from '@mui/material';
+import { FieldsSearchInterface, FlightResponse } from '@/types/components/SearchFieldsFlights';
+import { Fragment } from 'react';
+import ResultItemSearch from '@/components/SearchFieldsFlights/ResultItemSearch';
 
 const PopperComponent = (props: any) => {
-    return (
-        <span className="absolute top-14 right-0 left-0">
-            {props.children}
-        </span>
-    );
-}
+    return <span className='absolute top-14 right-0 left-0'>{props.children}</span>;
+};
 
-export default function FieldsSearch({label, options, icon}: FieldsSearchInterface) {
+export default function FieldsSearch({ label, options, icon }: FieldsSearchInterface) {
     return (
         <Autocomplete
             PopperComponent={PopperComponent}
@@ -22,7 +16,7 @@ export default function FieldsSearch({label, options, icon}: FieldsSearchInterfa
             id='FieldsSearch'
             options={options}
             autoHighlight
-            getOptionLabel={(option: any) => option.title}
+            getOptionLabel={(option: any) => option.countryCode}
             filterSelectedOptions={true}
             renderInput={params => (
                 <div className='flex items-center justify-between'>
@@ -38,7 +32,7 @@ export default function FieldsSearch({label, options, icon}: FieldsSearchInterfa
                                 width: '90%',
                                 paddingLeft: '10px',
                             },
-                            '& fieldset': {border: 'none', padding: '0px'},
+                            '& fieldset': { border: 'none', padding: '0px' },
                             '& label.Mui-focused': {
                                 color: 'var(--color-primary)',
                             },
@@ -52,12 +46,13 @@ export default function FieldsSearch({label, options, icon}: FieldsSearchInterfa
                     <div className='p-4 text-gray-400'>{icon}</div>
                 </div>
             )}
-            renderOption={(props, option: FieldsSearchItemInterface) => (
-                <li
+            renderOption={(props, option: FlightResponse) => (
+                // This key value is temporary and must be returned from the ID server
+                <ResultItemSearch
                     {...props}
-                    key={option.id}>
-                    {option.title}
-                </li>
+                    options={option}
+                    key={`${option.countryCode}-${Math.floor(Math.random() * 100)}`}
+                />
             )}
         />
     );
