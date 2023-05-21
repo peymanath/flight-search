@@ -4,7 +4,7 @@
 
 :root {
     --color-primary: #f24c4c;
-    --primayu: rgb(0, 0, 0);
+    --foreground-rgb: rgb(0, 0, 0);
     --background-start-rgb: rgb(214, 219, 220);
     --background-end-rgb: rgb(255, 255, 255);
 }
@@ -15,13 +15,4 @@
         --background-start-rgb: rgb(0, 0, 0);
         --background-end-rgb: rgb(0, 0, 0);
     }
-}
-
-body {
-    color: var(--foreground-rgb);
-    background: linear-gradient(
-            to bottom,
-            transparent,
-            var(--background-end-rgb)
-    ) var(--background-start-rgb);
 }
