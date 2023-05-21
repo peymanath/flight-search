@@ -1,6 +1,6 @@
 export interface FieldsSearchInterface {
     label: string;
-    options: FlightResponse[];
+    options: DestracturData[];
     icon: JSX.Element | string;
 }
 
@@ -26,4 +26,15 @@ export interface FlightResponse {
     countryCode: string;
     countryNames: FlightNamesResponse[];
     cities: FlightCitiesResponse[];
+    props?: any;
+}
+
+export interface DestracturData {
+    child: boolean;
+    resultType: 'airport' | 'city';
+    countryNames: string;
+    cityNames: string;
+    cityCode: string;
+    airportNames: string;
+    airportCode: string;
 }
