@@ -33,8 +33,8 @@ export default function BasicTabs({ tabData }: BasicTabsType) {
                             icon={iconTab}
                             label={labelTab}
                             {...dataTab(indexTab)}
-                            className={`rounded-t-md flex-row items-center justify-center gap-1 min-h-min ${
-                                value == indexTab ? 'bg-primary !text-white' : ''
+                            className={`!rounded-t-md !flex-row !items-center !justify-center !gap-1 !min-h-min ${
+                                value == indexTab ? '!bg-primary !text-white' : ''
                             }`}
                         />
                     ))}

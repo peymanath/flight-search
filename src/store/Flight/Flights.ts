@@ -10,7 +10,12 @@ export const getAsyncFlights = createAsyncThunk(
     async (searchValue: string, { rejectWithValue }) => {
         try {
             return await Http.get<FlightResponse[], FlightResponse[]>(
-                `https://api.beta.safrat.me/flight/place/search/?query=${searchValue || 'safrat'}`
+                `https://api.beta.safrat.me/flight/place/search/?query=${searchValue || 'safrat'}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
+                    },
+                }
             );
         } catch (error) {
             return rejectWithValue(error);
