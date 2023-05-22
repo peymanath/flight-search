@@ -5,7 +5,7 @@ module.exports = {
                 source: '/:path*',
                 destination: 'https://api.beta.safrat.me/:path*',
             },
-        ]
+        ];
     },
     reactStrictMode: true,
 };

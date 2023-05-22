@@ -1,20 +1,40 @@
 import { Autocomplete, TextField } from '@mui/material';
 import { FieldsSearchInterface, DestracturData } from '@/types/components/SearchFieldsFlights';
-import { Fragment } from 'react';
+import { useEffect, useState } from 'react';
 import ResultItemSearch from '@/components/SearchFieldsFlights/ResultItemSearch';
+import { useAppDispatch, useAppSelector } from '@/store/Hooks';
+import { getAsyncFlights } from '@/store/Flight/Flights';
+import { LoadingDashed } from 'react-huge-icons/outline';
 
 const PopperComponent = (props: any) => {
     return <div className='absolute top-16 right-0 left-0'>{props.children}</div>;
 };
+export default function FieldsSearch({ label, icon }: FieldsSearchInterface) {
+    const { flights, loading } = useAppSelector(state => state.flights);
+    const [open, setOpen] = useState<boolean>(false);
+    const [query, setQuery] = useState<string>('safrat');
+    const dispatch = useAppDispatch();
 
-export default function FieldsSearch({ label, options, icon }: FieldsSearchInterface) {
+    useEffect(() => {
+        const timeOutId = setTimeout(() => dispatch(getAsyncFlights(query)), 500);
+        return () => clearTimeout(timeOutId);
+    }, [query]);
+
     return (
         <Autocomplete
+            id='FieldsSearch'
             PopperComponent={PopperComponent}
             freeSolo
             fullWidth
-            id='FieldsSearch'
-            options={options}
+            disableClearable
+            open={open}
+            onOpen={() => {
+                setOpen(true);
+            }}
+            onClose={() => {
+                setOpen(false);
+            }}
+            options={flights}
             getOptionLabel={(option: any) =>
                 option.child ? option.airportNames : option.cityNames
             }
@@ -24,6 +44,7 @@ export default function FieldsSearch({ label, options, icon }: FieldsSearchInter
                         {...params}
                         label={label}
                         fullWidth
+                        onChange={event => setQuery(event.target.value)}
                         sx={{
                             '& label': {
                                 color: '#bfbfbf',
@@ -39,10 +60,18 @@ export default function FieldsSearch({ label, options, icon }: FieldsSearchInter
                         }}
                         InputProps={{
                             ...params.InputProps,
-                            autoComplete: 'new-password',
                         }}
                     />
-                    <div className='p-4 text-gray-400'>{icon}</div>
+                    <div className='p-4 text-gray-400'>
+                        {loading ? (
+                            <LoadingDashed
+                                color='inherit'
+                                className='w-5 h-5 animate-spin'
+                            />
+                        ) : (
+                            icon
+                        )}
+                    </div>
                 </div>
             )}
             renderOption={(props, option: DestracturData) => (

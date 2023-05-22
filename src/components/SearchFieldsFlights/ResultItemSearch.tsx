@@ -1,9 +1,4 @@
-import {
-    DestracturData,
-    FlightAirportsResponse,
-    FlightCitiesResponse,
-    FlightNamesResponse,
-} from '@/types/components/SearchFieldsFlights';
+import { DestracturData } from '@/types/components/SearchFieldsFlights';
 import { AirPlane, Location } from 'react-huge-icons/outline';
 
 interface ResultItemSearchInterface {

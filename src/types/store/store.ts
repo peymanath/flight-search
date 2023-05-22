@@ -1,7 +1,7 @@
-import {DestracturData} from "@/types/components/SearchFieldsFlights";
+import { DestracturData } from '@/types/components/SearchFieldsFlights';
 
 export interface FlightsInitialStateType {
-    flights: DestracturData[],
-    erorr: string | null,
-    loading: boolean,
+    flights: DestracturData[];
+    erorr: string | null;
+    loading: boolean;
 }

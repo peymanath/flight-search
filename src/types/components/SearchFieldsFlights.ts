@@ -1,6 +1,5 @@
 export interface FieldsSearchInterface {
     label: string;
-    options: DestracturData[];
     icon: JSX.Element | string;
 }
 

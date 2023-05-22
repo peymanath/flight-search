@@ -1,9 +1,6 @@
-import Box from '@mui/material/Box';
 import type { TabPanelProps } from '@/types/components/Tabs';
 
-export default function TabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
-
+export default function TabPanel({ children, value, index, ...other }: TabPanelProps) {
     return (
         <div
             role='tabpanel'

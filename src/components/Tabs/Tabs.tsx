@@ -1,6 +1,5 @@
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
 import type { SyntheticEvent } from 'react';
 import { useState } from 'react';
 import TabPanel from '@/components/Tabs/TabPanel';
@@ -16,36 +15,30 @@ function dataTab(index: number) {
 export default function BasicTabs({ tabData }: BasicTabsType) {
     const [value, setValue] = useState(0);
 
-    const handleChange = (event: SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-    };
-
     return (
-        <Box sx={{ width: '100%' }}>
-            <div className='border-b border-primary'>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    variant='fullWidth'
-                    TabIndicatorProps={{
-                        style: {
-                            backgroundColor: 'var(--color-primary)',
-                        },
-                    }}>
-                    {!!tabData &&
-                        tabData.map(({ id, iconTab, indexTab, labelTab }: BasicTabsTabDataType) => (
-                            <Tab
-                                key={id}
-                                icon={iconTab}
-                                label={labelTab}
-                                {...dataTab(indexTab)}
-                                className={`rounded-t-md flex-row items-center justify-center gap-1 min-h-min ${
-                                    value == indexTab ? 'bg-primary !text-white' : ''
-                                }`}
-                            />
-                        ))}
-                </Tabs>
-            </div>
+        <div className='w-full'>
+            <Tabs
+                value={value}
+                onChange={(event: SyntheticEvent, newValue: number) => setValue(newValue)}
+                variant='fullWidth'
+                scrollButtons='auto'
+                sx={{
+                    '& .MuiTabs-flexContainer': { borderBottom: '2px solid var(--color-primary)' },
+                    '& .MuiTabs-indicator': { display: 'none' },
+                }}>
+                {!!tabData &&
+                    tabData.map(({ id, iconTab, indexTab, labelTab }: BasicTabsTabDataType) => (
+                        <Tab
+                            key={id}
+                            icon={iconTab}
+                            label={labelTab}
+                            {...dataTab(indexTab)}
+                            className={`rounded-t-md flex-row items-center justify-center gap-1 min-h-min ${
+                                value == indexTab ? 'bg-primary !text-white' : ''
+                            }`}
+                        />
+                    ))}
+            </Tabs>
             {!!tabData &&
                 tabData.map(({ id, indexTab, TabPanelData }: BasicTabsTabDataType) => (
                     <TabPanel
@@ -55,6 +48,6 @@ export default function BasicTabs({ tabData }: BasicTabsType) {
                         {TabPanelData}
                     </TabPanel>
                 ))}
-        </Box>
+        </div>
     );
 }
