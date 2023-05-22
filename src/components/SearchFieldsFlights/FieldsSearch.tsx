@@ -16,7 +16,7 @@ export default function FieldsSearch({ label, icon }: FieldsSearchInterface) {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const timeOutId = setTimeout(() => dispatch(getAsyncFlights(query)), 500);
+        const timeOutId = setTimeout(() => dispatch(getAsyncFlights(query)), 2000);
         return () => clearTimeout(timeOutId);
     }, [query]);
 
